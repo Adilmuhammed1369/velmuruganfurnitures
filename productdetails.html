@@ -1,0 +1,278 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details - Velmurugan Furnitures</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      font-family: "Poppins", sans-serif;
+      --primary: #b06c2e;
+      --primary-dark: #8e4e20;
+      --navbar-bg: rgb(215, 106, 108);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #f8f8f8;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 18px 24px;
+      background: var(--navbar-bg);
+      color: #f8fafc;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.18);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-container {
+      width: min(1120px, 100%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .nav-logo h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .page-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      flex: 1;
+      text-align: center;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #e5e7eb;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #fbbf24;
+    }
+
+    .content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 20px;
+    }
+
+    .product-details {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .btn {
+      width: 200px;
+      padding: 12px;
+      border-radius: 12px;
+      background: var(--primary);
+      border: none;
+      color: white;
+      margin: 8px 0;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    #primg {
+      width: 500px;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    span, p {
+      font-family: "Poppins", sans-serif;
+      display: block;
+      margin: 12px 0;
+      font-size: 18px;
+    }
+
+    @media (max-width: 768px) {
+      #primg {
+        width: 100%;
+        height: auto;
+      }
+      .navbar { flex-direction: column; }
+      .nav-container { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="home.html" class="nav-logo">
+        <h1 style="margin: 0; font-size: 1.2rem;">Velmurugan furnitures</h1>
+      </a>
+      <div class="page-title">Product Details</div>
+      <div class="nav-links">
+        <a href="home.html">Home</a>
+        <a href="wishlist.html">Wishlist</a>
+        <a href="cart.html">Cart</a>
+        <a href="myorders.html">My Orders</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="content">
+    <img id="primg" src="" alt="product image">
+  </div>
+  <div class="product-details">
+    <span id="prnamedetails"></span>
+    <span id="prprice"></span>
+    <p id="prdescription" style="max-width:900px;margin:6px auto;color:#333"></p>
+    <div id="expectedDelivery" style="color:var(--primary);font-weight:600;margin:8px 0"></div>
+    <button class="btn" onclick="buy()">Buy Now</button>
+    <button class="btn" onclick="cart()">Add to Cart</button>
+    <button class="btn" onclick="wishl()">Add to Wishlist</button>
+  </div>
+
+  <script>
+    // try to get product by id from query, otherwise fallback to localStorage keys
+    (async function(){
+      const params = new URLSearchParams(window.location.search);
+      let data = null;
+      // Try to load by id first
+      if(params.has('id')){
+        try{
+          const res = await fetch('/api/products/' + params.get('id'));
+          if(res.ok){ data = await res.json(); }
+        }catch(e){ console.error('Error fetching product by id', e); }
+      }
+
+      // Fallback to localStorage.
+      // Prefer the page-selected `product` (set by sendData on listing pages).
+      if(!data){
+        try{ data = JSON.parse(localStorage.getItem('product')) || JSON.parse(localStorage.getItem('orderProduct')) || null; }catch(e){ data = null; }
+      }
+
+      // If still missing, try to find in full product list by id
+      if(!data && params.has('id')){
+        try{
+          const res = await fetch('/api/products');
+          if(res.ok){ const list = await res.json(); data = list.find(x=>String(x._id)===String(params.get('id'))) || null; }
+        }catch(e){ console.error('Error fetching product list', e); }
+      }
+
+      if(!data){
+        document.getElementById('prnamedetails').innerText = 'Product not found';
+        document.getElementById('prprice').innerText = '';
+        document.getElementById('prdescription').innerText = '';
+        document.getElementById('primg').src = './assets/images/products/1.jpg';
+        return;
+      }
+
+      // normalize and populate UI
+      const product = Object.assign({}, data);
+      document.getElementById("primg").src = product.img || product.image || './assets/images/products/1.jpg';
+      document.getElementById("prnamedetails").innerText = product.name || '';
+      document.getElementById("prprice").innerText = product.price || '';
+      document.getElementById("prdescription").innerText = product.description || '';
+      // store to orderProduct for other flows
+      try{ localStorage.setItem('orderProduct', JSON.stringify({ _id: product._id, img: product.img || product.image || '', name: product.name, price: product.price, description: product.description||'' })); }catch(e){}
+
+      // expected delivery: today + 7 days
+      function formatDate(d){ const dt = new Date(d); return dt.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }); }
+      const delivery = new Date(); delivery.setDate(delivery.getDate() + 7);
+      document.getElementById('expectedDelivery').innerText = 'Expected delivery: ' + formatDate(delivery);
+    })();
+
+    function cart() {
+      let product = JSON.parse(localStorage.getItem("orderProduct")) || JSON.parse(localStorage.getItem("product"));
+      let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+      cartItems.push(product);
+      localStorage.setItem("cart", JSON.stringify(cartItems));
+
+      try{
+        const loginUser = JSON.parse(localStorage.getItem('loginUser')) || null;
+        if(loginUser && loginUser._id){
+          fetch('/api/cart',{
+            method: 'POST', headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({ userId: loginUser._id, product })
+          }).catch(()=>{});
+        }
+      }catch(e){}
+
+      alert("Added to Cart");
+    }
+
+    function wishl() {
+      let product = JSON.parse(localStorage.getItem("product"));
+      let wishItems = JSON.parse(localStorage.getItem("wishlist")) || [];
+      wishItems.push(product);
+      localStorage.setItem("wishlist", JSON.stringify(wishItems));
+      try{
+        const loginUser = JSON.parse(localStorage.getItem('loginUser')) || null;
+        if(loginUser && loginUser._id){
+          fetch('/api/wishlist',{
+            method: 'POST', headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({ userId: loginUser._id, product })
+          }).catch(()=>{});
+        }
+      }catch(e){}
+      alert("Added to Wishlist");
+    }
+
+    function buy() {
+      let user = localStorage.getItem("loginUser");
+      if (!user) {
+        alert("Please login first");
+        location.href = "index.html";
+        return;
+      }
+      // Prefer the resolved `orderProduct` saved when this page loaded; fallback to `product` selected from listings
+      let product = JSON.parse(localStorage.getItem("orderProduct")) || JSON.parse(localStorage.getItem("product"));
+      if (!product) { alert('No product selected'); return; }
+      localStorage.setItem("orderProduct", JSON.stringify(product));
+      location.href = "buy.html";
+    }
+  </script>
+</body>
+</html>

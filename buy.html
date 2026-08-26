@@ -1,0 +1,475 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirm Order - Velmurugan Furnitures</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      font-family: "Poppins", sans-serif;
+      --primary: #b06c2e;
+      --primary-dark: #8e4e20;
+      --navbar-bg: rgb(215, 106, 108);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #f8f8f8;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 18px 24px;
+      background: var(--navbar-bg);
+      color: #f8fafc;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.18);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-container {
+      width: min(1120px, 100%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .nav-logo h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .page-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      flex: 1;
+      text-align: center;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #e5e7eb;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #fbbf24;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    span, p {
+      font-family: "Poppins", sans-serif;
+      display: block;
+      margin: 12px 0;
+      line-height: 1.6;
+    }
+
+    img {
+      width: 150px;
+      height: auto;
+      margin: 20px auto;
+      display: block;
+      border-radius: 8px;
+    }
+
+    button {
+      width: auto;
+      padding: 12px 24px;
+      margin: 12px 6px;
+      border-radius: 12px;
+      background: var(--primary);
+      border: none;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+      font-family: "Poppins", sans-serif;
+    }
+
+    button:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    button:last-child {
+      background: #d84e4e;
+    }
+
+    button:last-child:hover {
+      background: #c73a3a;
+    }
+
+    .button-group {
+      text-align: center;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="home.html" class="nav-logo">
+        <h1 style="margin: 0; font-size: 1.2rem;">Velmurugan furnitures</h1>
+      </a>
+      <div class="page-title">Confirm Order</div>
+      <div class="nav-links">
+        <a href="home.html">Home</a>
+        <a href="cart.html">Cart</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <span><strong>Delivery Address</strong></span>
+    <span id="showadress"></span>
+    <img id="prdimg" width="150">
+    <p id="prdname"></p>
+    <p id="prdprice"></p>
+    <div class="button-group">
+      <button onclick="showPaymentSection()" id="placeBtn">Place Order</button>
+      <button onclick="cancelorder()">Cancel</button>
+    </div>
+    
+    <div id="paymentSection" style="display:none; margin-top:20px;">
+      <div style="max-width:720px;margin:0 auto;background:#fff;border-radius:8px;padding:18px;border:1px solid #e6e6e6;">
+        <h3 style="margin:0 0 12px;color:var(--primary);">Choose a payment method</h3>
+
+        <div style="display:flex;gap:12px;flex-direction:column;">
+          <label style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:8px;border:1px solid #f0f0f0;">
+            <input type="radio" name="paymentMethod" value="cod" checked onchange="onPaymentMethodChange(this.value)"> 
+            <div>
+              <strong>Cash on Delivery (COD)</strong>
+              <div style="font-size:13px;color:#666">Pay with cash when your order is delivered.</div>
+            </div>
+          </label>
+
+          <!-- UPI option removed per request -->
+
+          <label style="display:flex;align-items:center;gap:12px;padding:12px;border-radius:8px;border:1px solid #f0f0f0;">
+            <input type="radio" name="paymentMethod" value="online" onchange="onPaymentMethodChange(this.value)"> 
+            <div>
+              <strong>Credit / Debit Card, Netbanking</strong>
+              <div style="font-size:13px;color:#666">Use card or netbanking to pay online instantly.</div>
+            </div>
+          </label>
+        </div>
+
+        <div id="paymentDetails" style="margin-top:16px;padding:12px;border-radius:6px;background:#fafafa;border:1px dashed #eee">
+          <div id="paymentSummary" style="font-size:15px;color:#333">Selected: <strong>Cash on Delivery</strong></div>
+          <div id="paymentAmount" style="margin-top:8px;font-weight:600;color:var(--primary)"></div>
+        </div>
+
+        <div style="margin-top:14px;text-align:right;">
+          <button onclick="cancelPaymentSection()" style="background:#e6e6e6;color:#222;margin-right:8px;border-radius:8px;padding:10px 16px;">Back</button>
+          <button onclick="proceedPayment()" id="proceedBtn" style="background:var(--primary);color:#fff;border-radius:8px;padding:10px 16px;">Continue</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order success modal -->
+    <div id="orderSuccessModal" style="display:none;position:fixed;inset:0;align-items:center;justify-content:center;background:rgba(0,0,0,0.45);z-index:9999;">
+      <div style="background:#fff;border-radius:12px;padding:22px;max-width:560px;width:92%;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.2);">
+        <div id="successIcon" style="width:72px;height:72px;margin:0 auto;border-radius:50%;background:linear-gradient(135deg,#6ee7b7,#10b981);display:flex;align-items:center;justify-content:center;color:#fff;font-size:40px;">✓</div>
+        <h2 id="successTitle" style="color:#065f46;margin:12px 0 6px;">Order placed successfully!</h2>
+        <p id="successMsg" style="color:#064e3b;margin:0 0 12px;font-size:15px">Thank you. Your order is confirmed.</p>
+
+        <div style="display:flex;gap:12px;align-items:center;justify-content:center;margin-bottom:12px;">
+          <img id="successImg" src="" alt="product" style="width:90px;height:90px;object-fit:cover;border-radius:8px;border:1px solid #eee;background:#fafafa">
+          <div style="text-align:left;">
+            <div id="successName" style="font-weight:700;color:#111"></div>
+            <div id="successPrice" style="color:var(--primary);font-weight:600;margin-top:6px"></div>
+            <div id="successDelivery" style="color:#374151;margin-top:8px;font-size:13px"></div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:10px;justify-content:center;margin-top:6px;flex-wrap:wrap">
+          <button id="viewProductBtn" style="background:#fff;border:1px solid #d1fae5;color:#064e3b;padding:10px 14px;border-radius:8px;">View Product</button>
+          <button id="goOrdersBtn" style="background:var(--primary);color:#fff;padding:10px 14px;border-radius:8px;">My Orders</button>
+          <button id="continueBtn" style="background:#e5e7eb;color:#111;padding:10px 14px;border-radius:8px;">Continue Shopping</button>
+        </div>
+      </div>
+    </div>
+    <!-- Loading overlay -->
+    <div id="orderLoading" style="display:none;position:fixed;inset:0;align-items:center;justify-content:center;background:rgba(0,0,0,0.45);z-index:9998;">
+      <div style="background:#fff;padding:22px;border-radius:12px;display:flex;flex-direction:column;align-items:center;box-shadow:0 10px 30px rgba(0,0,0,0.12);">
+        <div style="width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:10px">
+          <div style="width:40px;height:40px;border:4px solid #e5e7eb;border-top-color:var(--primary);border-radius:50%;animation:spin 1s linear infinite"></div>
+        </div>
+        <div style="font-weight:600;color:#111">Processing your order...</div>
+      </div>
+    </div>
+
+    <style>
+      @keyframes spin { to { transform: rotate(360deg); } }
+    </style>
+    <p id="status"></p>
+  </div>
+
+  <script>
+    let product = JSON.parse(localStorage.getItem("orderProduct"));
+    let user = JSON.parse(localStorage.getItem("loginUser"));
+
+    if (!product || !user) {
+      alert("Order data is missing. Please start again.");
+      location.href = "home.html";
+    }
+
+    document.getElementById("prdname").innerText = product.name;
+    document.getElementById("prdprice").innerText = product.price;
+    document.getElementById("prdimg").src = product.img;
+    document.getElementById("showadress").innerHTML = `
+      Name: ${user.name} <br>
+      Phone: ${user.phone} <br>
+      Address: ${user.address} <br>
+      Pincode: ${user.pincode}
+    `;
+
+    function parsePrice(priceStr){
+      if(!priceStr) return 0;
+      // remove non-digit and non-dot
+      const num = priceStr.replace(/[^0-9.]/g, '');
+      return parseFloat(num) || 0;
+    }
+
+    function showPaymentSection(){
+      document.getElementById('paymentSection').style.display = 'block';
+      document.getElementById('status').innerText = '';
+      const amount = parsePrice(product.price);
+      document.getElementById('paymentAmount').innerText = 'Amount to pay: ₹' + amount;
+      document.getElementById('paymentSummary').innerHTML = 'Selected: <strong>Cash on Delivery</strong>';
+      document.querySelector('input[name="paymentMethod"][value="cod"]').checked = true;
+    }
+
+    function cancelPaymentSection(){
+      document.getElementById('paymentSection').style.display = 'none';
+    }
+
+    function onPaymentMethodChange(val){
+      const map = { cod: 'Cash on Delivery', online: 'Online (Card/Netbanking)' };
+      document.getElementById('paymentSummary').innerHTML = 'Selected: <strong>' + (map[val]||val) + '</strong>';
+    }
+
+    function placeOrderCOD(){
+      if (!product || !user) { alert('Order data missing'); location.href='home.html'; return; }
+      document.getElementById('placeBtn').disabled = true;
+      document.getElementById('status').innerText = 'Placing order (COD)...';
+
+      const items = [{ name: product.name, price: product.price, img: product.img, quantity: 1 }];
+      const amount = parsePrice(product.price);
+
+      fetch('/api/orders/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items,
+          amount,
+          paymentMethod: 'cod',
+          userId: user._id || null,
+          customer_name: user.name || '',
+          customer_phone: user.phone || '',
+          customer_address: user.address || '',
+          customer_pincode: user.pincode || ''
+        })
+        }).then(r=>r.json()).then(data=>{
+          // show loading then success modal with details
+          localStorage.removeItem('orderProduct');
+          showLoadingThenSuccess(data.order || null);
+      }).catch(e=>{
+        localStorage.removeItem('orderProduct');
+        showOrderSuccess(null);
+      })
+    }
+
+    function initiateOnlinePayment(){
+      if (!product || !user) { alert('Order data missing'); location.href='home.html'; return; }
+      document.getElementById('placeBtn').disabled = true;
+      document.getElementById('status').innerText = 'Initializing online payment...';
+
+      const items = [{ name: product.name, price: product.price, img: product.img, quantity: 1 }];
+      const amount = parsePrice(product.price);
+
+      fetch('/api/orders/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items,
+          amount,
+          paymentMethod: 'online',
+          userId: user._id || null,
+          customer_name: user.name || '',
+          customer_phone: user.phone || '',
+          customer_address: user.address || '',
+          customer_pincode: user.pincode || ''
+        })
+      }).then(r=>r.json()).then(async data=>{
+        if (!data.razorpayOrder) {
+          throw new Error('Razorpay order not created');
+        }
+
+        const rOrder = data.razorpayOrder;
+        const options = {
+          key: data.key_id || '',
+          amount: rOrder.amount,
+          currency: rOrder.currency,
+          name: 'Velmurugan Furnitures',
+          description: product.name,
+          order_id: rOrder.id,
+          handler: function (response){
+            // verify payment on server and create the DB order only after successful verification
+            const items = [{ name: product.name, price: product.price, img: product.img, quantity: 1 }];
+            const amount = parsePrice(product.price);
+            fetch('/api/orders/verify', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_signature: response.razorpay_signature,
+                items: items,
+                amount: amount,
+                userId: user._id || null,
+                customer_name: user.name || '',
+                customer_phone: user.phone || '',
+                customer_address: user.address || '',
+                customer_pincode: user.pincode || ''
+              })
+            }).then(r=>r.json()).then(vdata=>{
+              // vdata.order contains saved order
+              localStorage.removeItem('orderProduct');
+              showLoadingThenSuccess(vdata.order || null);
+            }).catch(e=>{
+              alert('Payment succeeded but verification failed. Please contact support.');
+              document.getElementById('placeBtn').disabled = false;
+            });
+          },
+          modal: { ondismiss: function(){ document.getElementById('placeBtn').disabled = false; document.getElementById('status').innerText = ''; } }
+        };
+
+        // load Razorpay script dynamically if not present
+        if (typeof Razorpay === 'undefined'){
+          const s = document.createElement('script');
+          s.src = 'https://checkout.razorpay.com/v1/checkout.js';
+          s.onload = ()=>{ document.getElementById('status').innerText = ''; const rzp = new Razorpay(options); rzp.open(); };
+          document.body.appendChild(s);
+        } else {
+          document.getElementById('status').innerText = ''; const rzp = new Razorpay(options); rzp.open();
+        }
+
+      }).catch(e=>{
+        alert('Unable to start online payment. Please try COD or contact support.');
+        document.getElementById('placeBtn').disabled = false;
+        document.getElementById('status').innerText = '';
+      });
+    }
+
+    function proceedPayment(){
+      const selected = document.querySelector('input[name="paymentMethod"]:checked').value;
+      if(selected === 'cod') return placeOrderCOD();
+      if(selected === 'online') return initiateOnlinePayment();
+    }
+
+    function formatDate(d){
+      const dt = new Date(d);
+      const opt = { year: 'numeric', month: 'short', day: 'numeric' };
+      return dt.toLocaleDateString(undefined, opt);
+    }
+
+    function showOrderSuccess(order){
+      // compute delivery date = today + 7 days
+      const today = new Date();
+      const delivery = new Date(today.getTime() + 7*24*60*60*1000);
+      const imgEl = document.getElementById('successImg');
+      const nameEl = document.getElementById('successName');
+      const priceEl = document.getElementById('successPrice');
+      const deliveryEl = document.getElementById('successDelivery');
+
+      // Use current product if available
+      if (product) {
+        imgEl.src = product.img || product.image || '';
+        nameEl.innerText = product.name || '';
+        priceEl.innerText = product.price || '';
+      } else if (order && order.items && order.items[0]){
+        const it = order.items[0];
+        imgEl.src = it.img || '';
+        nameEl.innerText = it.name || '';
+        priceEl.innerText = it.price || '';
+      } else {
+        imgEl.src = '';
+        nameEl.innerText = 'Product';
+        priceEl.innerText = '';
+      }
+
+      deliveryEl.innerText = 'Expected delivery: ' + formatDate(delivery);
+
+      const modal = document.getElementById('orderSuccessModal');
+      modal.style.display = 'flex';
+      modal.style.transform = 'translateY(30px)';
+      modal.style.opacity = '0';
+      modal.style.transition = 'transform 360ms cubic-bezier(.2,.8,.2,1), opacity 360ms ease';
+      requestAnimationFrame(()=>{ modal.style.transform = 'translateY(0)'; modal.style.opacity = '1'; });
+
+      document.getElementById('viewProductBtn').onclick = function(){
+        if(product) localStorage.setItem('product', JSON.stringify(product));
+        location.href = 'productdetails.html';
+      };
+      document.getElementById('goOrdersBtn').onclick = function(){ location.href = 'myorders.html'; };
+      document.getElementById('continueBtn').onclick = function(){ location.href = 'home.html'; };
+    }
+
+    function showLoadingThenSuccess(order){
+      const loader = document.getElementById('orderLoading');
+      const modal = document.getElementById('orderSuccessModal');
+      // hide modal if visible
+      modal.style.display = 'none';
+      loader.style.display = 'flex';
+      // simulate processing time (2.5s)
+      setTimeout(()=>{
+        loader.style.display = 'none';
+        showOrderSuccess(order);
+      }, 2500);
+    }
+
+    // (simulate payment button removed) 
+
+    function cancelorder() {
+      location.href = "cart.html";
+    }
+  </script>
+</body>
+</html>

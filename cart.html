@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart - Velmurugan Furnitures</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      font-family: "Poppins", sans-serif;
+      --primary: #b06c2e;
+      --primary-dark: #8e4e20;
+      --navbar-bg: rgb(215, 106, 108);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background-color: #f8f8f8;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 18px 24px;
+      background: var(--navbar-bg);
+      color: #f8fafc;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.18);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-container {
+      width: min(1120px, 100%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .nav-logo h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .page-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      flex: 1;
+      text-align: center;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #e5e7eb;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #fbbf24;
+    }
+
+    button {
+      width: auto;
+      padding: 10px 20px;
+      height: auto;
+      border-radius: 12px;
+      background: var(--primary);
+      border: none;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.2s ease;
+      font-family: "Poppins", sans-serif;
+    }
+
+    button:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    button:last-child {
+      background: #d84e4e;
+    }
+
+    button:last-child:hover {
+      background: #c73a3a;
+    }
+
+    ul {
+      list-style: none;
+      padding: 20px;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    li {
+      margin: 15px 0;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      border-bottom: 1px solid #ddd;
+      padding: 15px;
+      background: white;
+      border-radius: 8px;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .row img {
+      width: 120px;
+      height: 160px;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #f5f5f5;
+    }
+
+    p {
+      font-family: "Poppins", sans-serif;
+      margin: 5px 0;
+    }
+
+    h2 {
+      font-family: "Poppins", sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="home.html" class="nav-logo">
+        <h1 style="margin: 0; font-size: 1.2rem;">Velmurugan furnitures</h1>
+      </a>
+      <div class="page-title">Your Cart</div>
+      <div class="nav-links">
+        <a href="home.html">Home</a>
+        <a href="wishlist.html">Wishlist</a>
+        <a href="cart.html" class="active">Cart</a>
+        <a href="myorders.html">My Orders</a>
+      </div>
+    </div>
+  </nav>
+
+  <ul id="prdscart"></ul>
+
+  <script>
+    let ul = document.getElementById("prdscart");
+
+    function loadCart() {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      // if user is logged in, prefer server-side cart
+      try{
+        const loginUser = JSON.parse(localStorage.getItem('loginUser')) || null;
+        if(loginUser && loginUser._id){
+          fetch('/api/cart/' + loginUser._id).then(r=>{
+            if(!r.ok) return null; return r.json();
+          }).then(data=>{
+            if(data && Array.isArray(data.items)){
+              cart = data.items;
+              localStorage.setItem('cart', JSON.stringify(cart));
+            }
+            renderCart(cart);
+          }).catch(()=> renderCart(cart));
+          return;
+        }
+      }catch(e){}
+      renderCart(cart);
+    }
+
+    var currentCartData = [];
+    function renderCart(cart){
+      currentCartData = cart || [];
+      ul.innerHTML = "";
+      if (!cart || cart.length === 0) { ul.innerHTML = "<h2>Your cart is empty</h2>"; return; }
+      cart.forEach((item, index) => {
+        let li = document.createElement("li");
+        li.innerHTML = `
+          <div class="row">
+            <img src="${item.img}" width="100" onclick="openProductFromCart(${index})" style="cursor:pointer">
+            <div style="flex: 1;">
+              <p><strong onclick="openProductFromCart(${index})" style="cursor:pointer;color:var(--primary)">${item.name}</strong></p>
+              <p><strong>${item.price}</strong></p>
+            </div>
+            <button onclick="placeOrderFromCart(${index})">Place Order</button>
+            <button onclick="removeFromCart(${index})">Remove</button>
+          </div>
+        `;
+        ul.appendChild(li);
+      });
+    }
+
+    function openProductFromCart(i){
+      const item = currentCartData && currentCartData[i];
+      if(!item) return;
+      try{
+        // prefer productId if stored
+        const pid = item.productId || item._id || item.product_id || item.productIdString;
+        if(pid) {
+          location.href = 'productdetails.html?id=' + encodeURIComponent(pid);
+          return;
+        }
+        localStorage.setItem('product', JSON.stringify(item));
+        location.href = 'productdetails.html';
+      }catch(e){}
+    }
+
+    loadCart();
+
+    async function removeFromCart(index) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      try{
+        const loginUser = JSON.parse(localStorage.getItem('loginUser')) || null;
+        if(loginUser && loginUser._id){
+          // sync full cart to server by replacing items
+          await fetch('/api/cart/' + loginUser._id, { method: 'PUT', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ items: cart }) }).catch(()=>{});
+        }
+      }catch(e){}
+      loadCart();
+    }
+
+    function placeOrderFromCart(i) {
+      let user = localStorage.getItem("loginUser");
+      if (!user) {
+        alert("Please login first");
+        location.href = "index.html";
+        return;
+      }
+      let cart = JSON.parse(localStorage.getItem("cart"));
+      localStorage.setItem("orderProduct", JSON.stringify(cart[i]));
+      location.href = "buy.html";
+    }
+  </script>
+</body>
+</html>

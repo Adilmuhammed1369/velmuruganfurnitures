@@ -1,0 +1,2297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velmurugan Furnitures - eCommerce Website</title>
+
+  <!--
+    - favicon
+  -->
+  <link rel="shortcut icon" href="./assets/images/logo/favicon.ico" type="image/x-icon">
+
+  <!--
+    - custom css link
+  -->
+  <link rel="stylesheet" href="./assets/css/style-prefix.css">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    .header-top {
+      position: relative;
+    }
+    .user-info {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      color: #333;
+      z-index: 10;
+    }
+    .logout-btn {
+      background: #b06c2e;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+    .logout-btn:hover {
+      background: #8e4e20;
+    }
+  </style>
+
+</head>
+
+<body>
+
+
+  <div class="overlay" data-overlay></div>
+
+
+
+  <!--
+    - HEADER
+  -->
+
+  <header>
+
+    <div class="header-top">
+      <div class="container">
+        <div class="user-info">
+          <span id="welcome-message"></span>
+          <button id="logout-btn" class="logout-btn">Logout</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-main">
+
+      <div class="container">
+
+        <a href="#" class="header-logo">
+          <img src="./Velmurugan.png" alt="Velmurugan Furnitures's logo" width="120" height="36">
+        </a>
+
+        
+        <div class="header-user-actions">
+
+         
+<a href="wishlist.html">
+          <button class="action-btn">
+            <ion-icon name="heart-outline"></ion-icon>
+            <span class="count">wishlist</span>
+          </button></a>
+<a href="cart.html">
+          <button class="action-btn">
+            <ion-icon name="bag-handle-outline"></ion-icon>
+            <span class="count">cart</span>
+          </button></a>
+          <a href="myorders.html">
+          <button class="action-btn">
+            <ion-icon name="receipt-outline"></ion-icon>
+            <span class="count">My Orders</span>
+          </button></a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <nav class="desktop-navigation-menu">
+
+      <div class="container">
+
+        <ul class="desktop-menu-category-list">
+
+      
+          <li class="menu-category">
+ <a href=newproducts.html class="menu-title">New Arrivals
+</a></li>
+
+          <li class="menu-category">
+            <a href="#" class="menu-title">Categories</a>
+
+            <div class="dropdown-panel">
+
+              <ul class="dropdown-panel-list">
+
+                <li class="menu-title">
+                  <a href="#">Living Room Furniture</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Sofa</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Sectional sofas</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Recliners</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Cofee tables</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Book shelves</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">
+                    <img src="./assets/images/products/1.jpg" alt="headphone collection" width="250"
+                      height="119"onclick="sendData(this)">
+                  </a>
+                </li>
+
+              </ul>
+
+              <ul class="dropdown-panel-list">
+
+                <li class="menu-title">
+                  <a href="#">Bedroom Furniture</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">beds(single,double,qeen,king)</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Wardrobes/Closets</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Dressing Tables</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Bedside tables / Nightstands</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Chest of drawers</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">
+                    <img src="./assets/images/products/2.jpg" alt="men's fashion" width="250" height="119">
+                  </a>
+                </li>
+
+              </ul>
+
+              <ul class="dropdown-panel-list">
+
+                <li class="menu-title">
+                  <a href="#">Dianing Room Furniture</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Dianing Table</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Dianing chairs</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Dianing sets</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Bar cabinets</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Crockery units / Sideboards</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">
+                    <img src="./assets/images/products/3.jpg" alt="women's fashion" width="250" height="119">
+                  </a>
+                </li>
+
+              </ul>
+
+              <ul class="dropdown-panel-list">
+
+                <li class="menu-title">
+                  <a href="#">Office Furniture</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Office Chairs</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Office Tables / Desks</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Workstations</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Computer Tables</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">Bookshelves</a>
+                </li>
+
+                <li class="panel-list-item">
+                  <a href="#">
+                    <img src="./assets/images/products/4.jpg" alt="mouse collection" width="250" height="119">
+                  </a>
+                </li>
+
+              </ul>
+
+            </div>
+          </li>
+
+          <li class="menu-category">
+            <a href="#" class="menu-title">Living Room Furniture</a>
+
+            <ul class="dropdown-list">
+
+              <li class="dropdown-item">
+                <a href="#">sofa</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#">sectional sofas</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#">Recliners</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#">Cofee tables</a>
+              </li>
+
+            </ul>
+          </li>
+
+          <li class="menu-category">
+            <a href="#" class="menu-title">Bedroom Furniture</a>
+
+            <ul class="dropdown-list">
+
+              <li class="dropdown-item">
+                <a href="#">beds(single,double,qeen,king)</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#">Wardrobes/Closets</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#">Bedside tables / Nightstands</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#">Dressing Tables</a>
+              </li>
+
+            </ul>
+          </li>
+
+          <li class="menu-category">
+            <a href="#" class="menu-title">Dianing Room Furniture</a>
+
+            <ul class="dropdown-list">
+
+              <li class="dropdown-item">
+                <a href="#">Dianing Table</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#">Dianing chairs</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#">Dianing sets</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#">Bar cabinets</a>
+              </li>
+
+            </ul>
+          </li>
+
+          <li class="menu-category">
+            <a href="#" class="menu-title">Office Furniture</a>
+
+            <ul class="dropdown-list">
+
+              <li class="dropdown-item">
+                <a href="#">Office Chairs</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#">>Office Tables / Desks</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#">Workstations</a>
+              </li>
+
+              <li class="dropdown-item">
+                <a href="#">Computer Tables</a>
+              </li>
+
+            </ul>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </nav>
+
+    <div class="mobile-bottom-navigation">
+
+      <button class="action-btn" data-mobile-menu-open-btn>
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+
+      <button class="action-btn">
+        <ion-icon name="bag-handle-outline"></ion-icon>
+
+        <span class="count">0</span>
+      </button>
+
+      <button class="action-btn">
+        <ion-icon name="home-outline"></ion-icon>
+      </button>
+
+      <button class="action-btn">
+        <ion-icon name="heart-outline"></ion-icon>
+
+        <span class="count">0</span>
+      </button>
+
+      <button class="action-btn" data-mobile-menu-open-btn>
+        <ion-icon name="grid-outline"></ion-icon>
+      </button>
+
+    </div>
+
+    
+    </nav>
+
+  </header>
+
+
+
+
+
+  <!--
+    - MAIN
+  -->
+
+  <main>
+
+    <!--
+      - BANNER
+    -->
+
+    <div class="banner">
+
+      <div class="container">
+
+        <div class="slider-container has-scrollbar">
+
+          <div class="slider-item">
+
+            <img src="./assets/images/banner-1.png" alt=" latest fashion sale" class="banner-img">
+
+            <div class="banner-content">
+
+              <p class="banner-subtitle">Trending item</p>
+
+              <h2 class="banner-title">Latest Home Furniture Sales</h2>
+
+              <p class="banner-text">
+                starting at ₹<b>5000</b>
+              </p>
+
+              <a href="#" class="banner-btn">Shop now</a>
+
+            </div>
+
+          </div>
+
+          <div class="slider-item">
+
+            <img src="./assets/images/banner-1.png" alt="modern " class="banner-img">
+
+            <div class="banner-content">
+
+              <p class="banner-subtitle">Trending accessories</p>
+
+              <h2 class="banner-title">Modern Furnitures</h2>
+
+              <p class="banner-text">
+                starting at ₹ <b>6000
+              </p>
+
+              <a href="#" class="banner-btn">Shop now</a>
+
+            </div>
+
+          </div>
+
+          <div class="slider-item">
+
+            <img src="./assets/images/banner-1.png" alt="new summer sale" class="banner-img">
+
+            <div class="banner-content">
+
+              <p class="banner-subtitle">Sale Offer</p>
+
+              <h2 class="banner-title">New fashion furnitures</h2>
+
+              <p class="banner-text">
+                 starting at ₹ <b>6000
+              </p>
+
+              <a href="#" class="banner-btn">Shop now</a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+
+
+    <!--
+      - CATEGORY
+    -->
+    <section class="new-arrival-section">
+      <div class="container new-arrival-inner">
+        <div>
+          <div class="new-arrival-title">New Arrivals</div>
+          <div class="new-arrival-subtitle">Discover the latest furniture added this week</div>
+        </div>
+        <div>
+          <a href="newproducts.html" class="new-arrival-btn">Explore New Arrivals</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Small fixed grid for latest new products -->
+    <div class="container" style="margin-top:18px">
+      <div id="homeNewGrid" class="home-new-grid"></div>
+    </div>
+
+
+    <!--
+      - PRODUCT
+    -->
+
+    <div class="product-container">
+
+      <div class="container">
+
+
+        <!--
+          - SIDEBAR
+        -->
+
+        
+        <div class="sidebar  has-scrollbar" data-mobile-menu>
+
+          
+
+          <div class="product-showcase">
+
+            <h3 class="showcase-heading">Best Products</h3>
+
+            <div class="showcase-wrapper">
+
+              <div class="showcase-container">
+
+                <div class="showcase"onclick="sendData(this)">
+
+                  <a href="#" class="showcase-img-box">
+                    <img src="./assets/images/products/1.jpg"alt="furniture1"width="75" height="75"class="showcase-img">
+</a>
+
+                  <div class="showcase-content">
+
+                    <a href="#">
+                      <h4 class="showcase-title">Living Room Furniture</h4>
+                    </a>
+
+                    <div class="showcase-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <div class="price-box">
+                      <del>30000₹</del>
+                      <p class="price">25000₹</p>
+                    </div>
+
+                  </div>
+
+                </div>
+                <div id="adminProductContainer"  class="showcase"></div>
+
+                <div class="showcase"onclick="sendData(this)">
+
+                  <a href="#" class="showcase-img-box">
+                    <img src="./assets/images/products/2.jpg" alt="furniture2" class="showcase-img"
+                      width="75" height="75">
+                  </a>
+
+                  <div class="showcase-content">
+
+                    <a href="#">
+                      <h4 class="showcase-title">Bedroom Furniture</h4>
+                    </a>
+                    <div class="showcase-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star-half-outline"></ion-icon>
+                    </div>
+
+                    <div class="price-box">
+                      <del>70000₹</del>
+                      <p class="price">40000₹</p>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="showcase"onclick="sendData(this)">
+
+                  <a href="#" class="showcase-img-box">
+                    <img src="./assets/images/products/3.jpg" alt="furniture3" class="showcase-img" width="75"
+                      height="75">
+                  </a>
+
+                  <div class="showcase-content">
+
+                    <a href="#">
+                      <h4 class="showcase-title">Dianing Room Furniture</h4>
+                    </a>
+                    <div class="showcase-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star-half-outline"></ion-icon>
+                    </div>
+
+                    <div class="price-box">
+                      <del>50000₹</del>
+                      <p class="price">25000</p>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="showcase"onclick="sendData(this)">
+
+                  <a href="#" class="showcase-img-box">
+                    <img src="./assets/images/products/4.jpg" alt="furniture4" class="showcase-img" width="75"
+                      height="75">
+                  </a>
+
+                  <div class="showcase-content">
+
+                    <a href="#">
+                      <h4 class="showcase-title">Office Furniture</h4>
+                    </a>
+                    <div class="showcase-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <div class="price-box">
+                      <del>60000₹</del>
+                      <p class="price">30000₹</p>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="product-box">
+
+          <!--
+            - PRODUCT MINIMAL
+          -->
+
+          <div class="product-minimal">
+
+            <div class="product-showcase">
+             <div class="product-showcase">
+
+
+</div>
+
+
+
+              <h2 class="title">best deals</h2>
+
+              <div class="showcase-wrapper has-scrollbar">
+
+                <div class="showcase-container">
+
+                  <div class="showcase"onclick="sendData(this)">
+
+                    <a href="#" class="showcase-img-box">
+                      <img src="./assets/images/products/sof1.jpg" alt="furniture2" width="70" class="showcase-img">
+                    </a>
+
+                    <div class="showcase-content">
+
+                      <a href="#">
+                        <h4 class="showcase-title">wooden living room setty</h4>
+                      </a>
+
+                      <a href="#" class="showcase-category">sofa</a>
+
+                      <div class="price-box">
+                        <p class="price">₹25000</p>
+                        <del>₹40000</del>
+                      </div>
+
+                    </div>
+                     
+
+                  </div>
+
+                  <div class="showcase"onclick="sendData(this)">
+                  
+                    <a href="#" class="showcase-img-box">
+                      <img src="./assets/images/products/officetable.png" alt="furniture2" class="showcase-img" width="70">
+                    </a>
+                  
+                    <div class="showcase-content">
+                  
+                      <a href="#">
+                        <h4 class="showcase-title">Office table</h4>
+                      </a>
+                  
+                      <a href="#" class="showcase-category">table</a>
+                  
+                      <div class="price-box">
+                        <p class="price">₹20000</p>
+                        <del>₹30000</del>
+                      </div>
+                  
+                    </div>
+                  
+                  </div>
+
+                  <div class="showcase"onclick="sendData(this)">
+                  
+                    <a href="#" class="showcase-img-box">
+                      <img src="./assets/images/products/dianing.jpg" alt="furniture2" class="showcase-img"
+                        width="70">
+                    </a>
+                  
+                    <div class="showcase-content">
+                  
+                      <a href="#">
+                        <h4 class="showcase-title">Dianing tables</h4>
+                      </a>
+                  
+                      <a href="#" class="showcase-category">tables</a>
+                  
+                      <div class="price-box">
+                        <p class="price">₹40000</p>
+                        <del>₹55000</del>
+                      </div>
+                  
+                    </div>
+                  
+                  </div>
+
+                  <div class="showcase"onclick="sendData(this)">
+                  
+                    <a href="#" class="showcase-img-box">
+                      <img src="./assets/images/products/shelf.jpg" alt="furniture2" class="showcase-img"
+                        width="70">
+                    </a>
+                  
+                    <div class="showcase-content">
+                  
+                      <a href="#">
+                        <h4 class="showcase-title">shelves</h4>
+                      </a>
+                  
+                      <a href="#" class="showcase-category">shelves</a>
+                  
+                      <div class="price-box">
+                        <p class="price">₹10000</p>
+                        <del>₹15000</del>
+                      </div>
+                  
+                    </div>
+                  
+                  </div>
+
+                </div>
+
+
+              </div>
+
+            </div>
+
+            <div class="product-showcase">
+            
+              <h2 class="title">Trending</h2>
+            
+              <div class="showcase-wrapper  has-scrollbar">
+            
+                <div class="showcase-container">
+            
+                  <div class="showcase"onclick="sendData(this)">
+            
+                    <a href="#" class="showcase-img-box">
+                      <img src="./assets/images/products/dianning.jpg" alt="running & trekking shoes - white" class="showcase-img"
+                        width="70">
+                    </a>
+            
+                    <div class="showcase-content">
+            
+                      <a href="#">
+                        <h4 class="showcase-title">Dianning sett</h4>
+                      </a>
+            
+                      <a href="#" class="showcase-category">dianning</a>
+            
+                      <div class="price-box">
+                        <p class="price">₹45000</p>
+                        <del>₹55000</del>
+                      </div>
+            
+                    </div>
+            
+                  </div>
+            
+                  <div class="showcase"onclick="sendData(this)">
+            
+                    <a href="#" class="showcase-img-box">
+                      <img src="./assets/images/products/living.jpg" alt="trekking & running shoes - black" class="showcase-img"
+                        width="70">
+                    </a>
+            
+                    <div class="showcase-content">
+            
+                      <a href="#">
+                        <h4 class="showcase-title">wooden sofa living room </h4>
+                      </a>
+            
+                      <a href="#" class="showcase-category">sofa</a>
+            
+                      <div class="price-box">
+                        <p class="price">₹35000</p>
+                        <del>₹45000</del>
+                      </div>
+            
+                    </div>
+            
+                  </div>
+            
+                  <div class="showcase"onclick="sendData(this)">
+            
+                    <a href="#" class="showcase-img-box">
+                      <img src="./assets/images/products/teak-wood-furniture-set.jpg" alt="living" class="showcase-img"
+                        width="70">
+                    </a>
+            
+                    <div class="showcase-content">
+            
+                      <a href="#">
+                        <h4 class="showcase-title">Teak-wood-furniture-set</h4>
+                      </a>
+            
+                      <a href="#" class="showcase-category">caboard</a>
+            
+                      <div class="price-box">
+                        <p class="price">₹50000</p>
+                        <del>₹70000</del>
+                      </div>
+            
+                    </div>
+            
+                  </div>
+            
+                  <div class="showcase"onclick="sendData(this)">
+            
+                    <a href="#" class="showcase-img-box">
+                      <img src="./assets/images/products/Wardrobe-6c.jpg" alt="sports claw women's shoes" class="showcase-img"
+                        width="70">
+                    </a>
+            
+                    <div class="showcase-content">
+            
+                      <a href="#">
+                        <h4 class="showcase-title">Wooden Wardrobe</h4>
+                      </a>
+            
+                      <a href="#" class="showcase-category">caboard</a>
+            
+                      <div class="price-box">
+                        <p class="price">₹25000</p>
+                        <del>₹40000</del>
+                      </div>
+            
+                    </div>
+            
+                  </div>
+            
+                </div>
+            
+            
+              </div>
+            
+            </div>
+
+            <div class="product-showcase">
+            
+              <h2 class="title">Top Rated</h2>
+            
+              <div class="showcase-wrapper  has-scrollbar">
+            
+                <div class="showcase-container">
+            
+                  <div class="showcase"onclick="sendData(this)">
+            
+                    <a href="#" class="showcase-img-box">
+                      <img src="./assets/images/products/woodsetty.jpg" alt="pocket watch leather pouch" class="showcase-img"
+                        width="70">
+                    </a>
+            
+                    <div class="showcase-content">
+            
+                      <a href="#">
+                        <h4 class="showcase-title">wooden living room sofa</h4>
+                      </a>
+            
+                      <a href="#" class="showcase-category">sofa</a>
+            
+                      <div class="price-box">
+                        <p class="price">₹20000</p>
+                        <del>₹25000</del>
+                      </div>
+            
+                    </div>
+            
+                  </div>
+            
+                  <div class="showcase"onclick="sendData(this)">
+            
+                    <a href="#" class="showcase-img-box">
+                      <img src="./assets/41nrgX-YBlL._AC_UF894,1000_QL80_FMwebp_.png" alt="silver deer heart necklace" class="showcase-img"
+                        width="70">
+                    </a>
+            
+                    <div class="showcase-content">
+            
+                      <a href="#">
+                        <h4 class="showcase-title">
+Wooden Tree Wall Shelf | Stylish Wall Mounted Shelf for Home & Office Décor | Engineered Wood, Brown | Storage & Display Rack for Living Room
+</h4>
+                      </a>
+            
+                      <a href="#" class="showcase-category">shelf</a>
+            
+                      <div class="price-box">
+                        <p class="price">500₹</p>
+                        <del>1000₹</del>
+                      </div>
+            
+                    </div>
+            
+                  </div>
+            
+                  <div class="showcase"onclick="sendData(this)">
+            
+                    <a href="#" class="showcase-img-box">
+                      <img src="./assets/61AdI9QZvSL._AA1024_AC_FMwebp_QL65_.png" alt="titan 100 ml womens perfume" class="showcase-img"
+                        width="70">
+                    </a>
+            
+                    <div class="showcase-content">
+            
+                      <a href="#">
+                        <h4 class="showcase-title">
+Floating Wall Mounted Wooden Shelf – Stylish Display Organizer, L-Shaped Wall Shelf for Living Room, Bedroom, Kitchen, Hallway, 17" Length,
+</h4>
+                      </a>
+            
+                      <a href="#" class="showcase-category">shelf</a>
+            
+                      <div class="price-box">
+                        <p class="price">750₹</p>
+                        <del>1500₹</del>
+                      </div>
+            
+                    </div>
+            
+                  </div>
+            
+                  <div class="showcase"onclick="sendData(this)">
+            
+                    <a href="#" class="showcase-img-box">
+                      <img src="./assets/61gL35G1btL._AC_UF894,1000_QL80_FMwebp_.png" alt="men's leather reversible belt" class="showcase-img"
+                        width="70">
+                    </a>
+            
+                    <div class="showcase-content">
+            
+                      <a href="#">
+                        <h4 class="showcase-title">
+Wood Bookshelf Cabinet Book Rack Organizer with Shelves for Decor Display, Cabinet Floor Standing for Home Library (Wenge & White)
+</h4>
+                      </a>
+            
+                      <a href="#" class="showcase-category">cabinet</a>
+            
+                      <div class="price-box">
+                        <p class="price">5000₹</p>
+                        <del>7000₹</del>
+                      </div>
+            
+                    </div>
+            
+                  </div>
+            
+                </div>
+            
+                <div class="showcase-container">
+            
+                  <div class="showcase"onclick="sendData(this)">
+            
+                    <a href="#" class="showcase-img-box">
+                      <img src="./assets/61hqJefnC9L._AA1080_AC_FMwebp_QL65_.png" alt="platinum zircon classic ring" class="showcase-img"
+                        width="70">
+                    </a>
+            
+                    <div class="showcase-content">
+            
+                      <a href="#">
+                        <h4 class="showcase-title">Wood Computer Desk with Shelf – Modern Laptop Study Table for Home Office, Workstation & Writing Desk for Students and Professionals (ST-09-White)</h4>
+                      </a>
+            
+                      <a href="#" class="showcase-category">shelf</a>
+            
+                      <div class="price-box">
+                        <p class="price">4500₹</p>
+                        <del>6000₹</del>
+                      </div>
+            
+                    </div>
+            
+                  </div>
+            
+                  <div class="showcase"onclick="sendData(this)">
+            
+                    <a href="#" class="showcase-img-box">
+                      <img src="./assets/61MyTpBEn0L._AA1080_AC_FMwebp_QL65_.png" alt="smart watche vital plus" class="showcase-img" width="70">
+                    </a>
+            
+                    <div class="showcase-content">
+            
+                      <a href="#">
+                        <h4 class="showcase-title">4 Door Wooden Wardrobe for Bedroom | Almirah with 13 Shelves | Clothes Cupboard | Engineered Wood | Walnut
+</h4>
+                      </a>
+            
+                      <a href="#" class="showcase-category">wardrobe</a>
+            
+                      <div class="price-box">
+                        <p class="price">25000₹</p>
+                        <del>35000₹</del>
+                      </div>
+            
+                    </div>
+            
+                  </div>
+            
+                  <div class="showcase"onclick="sendData(this)">
+            
+                    <a href="#" class="showcase-img-box">
+                      <img src="./assets/71LO+Vnz6gL._AC_UF894,1000_QL80_FMwebp_.png" alt="shampoo conditioner packs" class="showcase-img"
+                        width="70">
+                    </a>
+            
+                    <div class="showcase-content">
+            
+                      <a href="#">
+                        <h4 class="showcase-title">Wood Multipurpose Floor Standing Bookshelf Decor Display Shelves Wall Book Storage Rack Organizer with Hinged Door for Office Home (Brown Maple & White)
+</h4>
+                      </a>
+            
+                      <a href="#" class="showcase-category">bookshelf</a>
+            
+                      <div class="price-box">
+                        <p class="price">6500₹</p>
+                        <del>8000₹</del>
+                      </div>
+            
+                    </div>
+            
+                  </div>
+            
+                  <div class="showcase"onclick="sendData(this)">
+            
+                    <a href="#" class="showcase-img-box">
+                      <img src="./assets/71w6EZtiOnL._AC_UF894,1000_QL80_FMwebp_.png" alt="rose gold peacock earrings" class="showcase-img"
+                        width="70">
+                    </a>
+            
+                    <div class="showcase-content">
+            
+                      <a href="#">
+                        <h4 class="showcase-title">Wood Bookshelf Crockery Storage Cabinet, Book Rack Organizer with Shelves for Décor Display & 2 Doors, Floor Standing Storage Unit for Office Library Home (Wenge, With Drawer)
+</h4>
+                      </a>
+            
+                      <a href="#" class="showcase-category">bookshelf</a>
+            
+                      <div class="price-box">
+                        <p class="price">6500₹</p>
+                        <del>8500₹</del>
+                      </div>
+            
+                    </div>
+            
+                  </div>
+            
+                </div>
+            
+              </div>
+            
+            </div>
+
+          </div>
+
+
+
+          <!--
+            - PRODUCT FEATURED
+          -->
+
+          <div class="product-featured">
+
+            <h2 class="title">Deal of the day</h2>
+
+            <div class="showcase-wrapper has-scrollbar">
+
+              <div class="showcase-container">
+
+                <div class="showcase"onclick="sendData(this)">
+                  
+                  <div class="showcase-banner">
+                    <img src="./assets/images/products/dianing.jpg" alt="dianing" class="showcase-img">
+                  </div>
+
+                  <div class="showcase-content">
+                    
+                    <div class="showcase-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+                    </div>
+
+                    <a href="#">
+                      <h3 class="showcase-title">six chair wooden dianning set</h3>
+                    </a>
+
+                    <p class="showcase-desc">
+                    high quality wooden dinning set at affordable price
+                    </p>
+
+                    <div class="price-box">
+                      <p class="price">₹28000</p>
+
+                      <del>₹35000</del>
+                    </div>
+
+                    <button class="add-cart-btn" onclick="cart(this)">add to cart</button>
+
+                    <div class="showcase-status">
+                      <div class="wrapper">
+                        <p>
+                          already sold: <b>20</b>
+                        </p>
+
+                        <p>
+                          available: <b>10</b>
+                        </p>
+                      </div>
+
+                      <div class="showcase-status-bar"></div>
+                    </div>
+
+                    <div class="countdown-box">
+
+                      <p class="countdown-desc">
+                        Hurry Up! Offer ends in:
+                      </p>
+
+                      <div class="countdown">
+
+                        <div class="countdown-content">
+
+                          <p class="display-number">10</p>
+
+                          <p class="display-text">Days</p>
+
+                        </div>
+
+                        <div class="countdown-content">
+                          <p class="display-number">24</p>
+                          <p class="display-text">Hours</p>
+                        </div>
+
+                        <div class="countdown-content">
+                          <p class="display-number">59</p>
+                          <p class="display-text">Min</p>
+                        </div>
+
+                        <div class="countdown-content">
+                          <p class="display-number">00</p>
+                          <p class="display-text">Sec</p>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="showcase-container">
+              
+                <div class="showcase"onclick="sendData(this)">
+              
+                  <div class="showcase-banner">
+                    <img onclick="sendData(this)" src="./assets/61MyTpBEn0L._AA1080_AC_FMwebp_QL65_.png" alt="wooden caboard Almirah with 13 Shelves" class="showcase-img">
+                  </div>
+              
+                  <div class="showcase-content">
+              
+                    <div class="showcase-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+                    </div>
+                     <a href="#">
+                      <h3 class="showcase-title">wooden caboard Almirah</h3>
+                    </a>
+
+                    <p class="showcase-desc"> with 13 Shelves
+                    
+                    </p>
+
+                    <div class="price-box">
+                      <p class="price">₹25000</p>
+
+                      <del>₹35000</del>
+                    </div>
+              
+                    <button class="add-cart-btn" onclick="cart(this)">add to cart</button>
+              
+                    <div class="showcase-status">
+                      <div class="wrapper">
+                        <p> already sold: <b>15</b> </p>
+              
+                        <p> available: <b>10</b> </p>
+                      </div>
+              
+                      <div class="showcase-status-bar"></div>
+                    </div>
+              
+                    <div class="countdown-box">
+              
+                      <p class="countdown-desc">Hurry Up! Offer ends in:</p>
+              
+                      <div class="countdown">
+                        <div class="countdown-content">
+                          <p class="display-number">9</p>
+                          <p class="display-text">Days</p>
+                        </div>
+              
+                        <div class="countdown-content">
+                          <p class="display-number">24</p>
+                          <p class="display-text">Hours</p>
+                        </div>
+              
+                        <div class="countdown-content">
+                          <p class="display-number">59</p>
+                          <p class="display-text">Min</p>
+                        </div>
+              
+                        <div class="countdown-content">
+                          <p class="display-number">00</p>
+                          <p class="display-text">Sec</p>
+                        </div>
+                      </div>
+              
+                    </div>
+              
+                  </div>
+              
+                </div>
+              
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <!--
+            - PRODUCT GRID
+          -->
+
+          <div class="product-main">
+
+            <h2 class="title">New Products</h2>
+
+            <div class="product-grid">
+
+              <div class="showcase"onclick="sendData(this)">
+
+                <div class="showcase-banner">
+
+                  <img src="./assets/81+Yp++nruL._AA1080_AC_FMwebp_QL65_.png" alt="Mens Winter Leathers woodens" width="300" class="product-img default">
+                  <img src="./assets/81+Yp++nruL._AA1080_AC_FMwebp_QL65_.png" alt="Mens Winter Leathers woodens" width="300" class="product-img hover">
+
+                  <p class="showcase-badge">15%</p>
+
+                  <div class="showcase-actions">
+
+                    <button class="btn-action">
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+
+                    <button class="btn-action">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </button>
+
+                    <button class="btn-action">
+                      <ion-icon name="repeat-outline"></ion-icon>
+                    </button>
+
+                    <button class="btn-action">
+                      <ion-icon name="bag-add-outline"></ion-icon>
+                    </button>
+
+                  </div>
+
+                </div>
+
+                <div class="showcase-content">
+
+                  <a href="#" class="showcase-category">wooden</a>
+
+                  <a href="#">
+                    <h3 class="showcase-title">wooden sideboard cabinet</h3>
+                  </a>
+
+                  <div class="showcase-rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                  </div>
+
+                  <div class="price-box">
+                    <p class="price">4500₹</p>
+                    <del>6000₹</del>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="showcase"onclick="sendData(this)">
+              
+                <div class="showcase-banner">
+                  <img src="./assets/81Pdk2oa0qL._AC_UF894,1000_QL80_FMwebp_.png" alt="Pure Garment Dyed Cotton Shirt" class="product-img default"
+                    width="300">
+                  <img src="./assets/81Pdk2oa0qL._AC_UF894,1000_QL80_FMwebp_.png" alt="Pure Garment Dyed Cotton Shirt" class="product-img hover"
+                    width="300">
+              
+                  <p class="showcase-badge angle black">sale</p>
+              
+                  <div class="showcase-actions">
+                    <button class="btn-action">
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="repeat-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="bag-add-outline"></ion-icon>
+                    </button>
+                  </div>
+                </div>
+              
+                <div class="showcase-content">
+                  <a href="#" class="showcase-category">shelf</a>
+              
+                  <h3>
+                    <a href="#" class="showcase-title">
+
+Wooden Tree Wall Shelf | Stylish Wall Mounted Shelf for Home & Office Décor | Engineered Wood, Brown | Storage & Display Rack for Living Room
+</a>
+                  </h3>
+              
+                  <div class="showcase-rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                  </div>
+              
+                  <div class="price-box">
+                    <p class="price">2000₹</p>
+                    <del>3000₹</del>
+                  </div>
+              
+                </div>
+              
+              </div>
+
+              <div class="showcase"onclick="sendData(this)">
+              
+                <div class="showcase-banner">
+                  <img src="./assets/717IAcdZjfL._AC_UF894,1000_QL80_FMwebp_.png" alt="image product" class="product-img default"
+                    width="300">
+                  <img src="./assets/717IAcdZjfL._AC_UF894,1000_QL80_FMwebp_.png" alt="image product" class="product-img hover"
+                    width="300">
+              
+                  <div class="showcase-actions">
+                    <button class="btn-action">
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="repeat-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="bag-add-outline"></ion-icon>
+                    </button>
+                  </div>
+                </div>
+              
+                <div class="showcase-content">
+                  <a href="#" class="showcase-category">wooden</a>
+              
+                  <h3>
+                    <a href="#" class="showcase-title">Handmade Wooden Outdoor Adirondack Natural Brown Foldable Coffee Table, Patio End Table for Poolside Garden, Living Room, Bedroom, Small Spaces (Square) 13 Inch
+</a>
+                  </h3>
+              
+                  <div class="showcase-rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                  </div>
+              
+                  <div class="price-box">
+                    <p class="price">1500₹</p>
+                    <del>2000₹</del>
+                  </div>
+              
+                </div>
+              
+              </div>
+
+              <div class="showcase"onclick="sendData(this)">
+              
+                <div class="showcase-banner">
+                  <img src="./assets/61gL35G1btL._AC_UF894,1000_QL80_FMwebp_.png" alt="Black Floral Wrap Midi wood" class="product-img default"
+                    width="300">
+                  <img src="./assets/61gL35G1btL._AC_UF894,1000_QL80_FMwebp_.png" alt="Black Floral Wrap Midi wood" class="product-img hover"
+                    width="300">
+              
+                  <p class="showcase-badge angle pink">new</p>
+              
+                  <div class="showcase-actions">
+                    <button class="btn-action">
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="repeat-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="bag-add-outline"></ion-icon>
+                    </button>
+                  </div>
+                </div>
+              
+                <div class="showcase-content">
+                  <a href="#" class="showcase-category">wood</a>
+              
+                  <h3>
+                    <a href="#" class="showcase-title">Wood Bookshelf Cabinet Book Rack Organizer with Shelves for Decor Display, Cabinet Floor Standing for Home Library (Wenge & White)
+</a>
+                  </h3>
+              
+                  <div class="showcase-rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
+              
+                  <div class="price-box">
+                    <p class="price">5000₹</p>
+                    <del>7000₹</del>
+                  </div>
+              
+                </div>
+              
+              </div>
+
+              <div class="showcase"onclick="sendData(this)">
+              
+                <div class="showcase-banner">
+                  <img src="./assets/61hqJefnC9L._AA1080_AC_FMwebp_QL65_.png" alt="Casual Men's Brown shoes" class="product-img default"
+                    width="300">
+                  <img src="./assets/61hqJefnC9L._AA1080_AC_FMwebp_QL65_.png" alt="Casual Men's Brown shoes" class="product-img hover"
+                    width="300">
+              
+                  <div class="showcase-actions">
+                    <button class="btn-action">
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="repeat-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="bag-add-outline"></ion-icon>
+                    </button>
+                  </div>
+                </div>
+              
+                <div class="showcase-content">
+                  <a href="#" class="showcase-category">office</a>
+              
+                  <h3>
+                    <a href="#" class="showcase-title">Wood Computer Desk with Shelf – Modern Laptop Study Table for Home Office, Workstation & Writing Desk for Students and Professionals (ST-09-White)
+                      </a>
+                  </h3>
+              
+                  <div class="showcase-rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </div>
+              
+                   <div class="price-box">
+                        <p class="price">4500₹</p>
+                        <del>6000₹</del>
+                      </div>
+            
+              
+                </div>
+              
+              </div>
+
+              <div class="showcase"onclick="sendData(this)">
+              
+                <div class="showcase-banner">
+                  <img src="./assets/61MyTpBEn0L._AA1080_AC_FMwebp_QL65_.png" alt="Pocket Watch Leather Pouch" class="product-img default"
+                    width="300">
+                  <img src="./assets/61MyTpBEn0L._AA1080_AC_FMwebp_QL65_.png" alt="Pocket Watch Leather Pouch" class="product-img hover"
+                    width="300">
+              
+                  <p class="showcase-badge angle black">sale</p>
+              
+                  <div class="showcase-actions">
+                    <button class="btn-action">
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="repeat-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="bag-add-outline"></ion-icon>
+                    </button>
+                  </div>
+                </div>
+              
+                <div class="showcase-content">
+                  <a href="#" class="showcase-category">caboard</a>
+              
+                  <h3>
+                    <a href="#" class="showcase-title">4 Door Wooden Wardrobe for Bedroom | Almirah with 13 Shelves | Clothes Cupboard | Engineered Wood | Walnut</a> </h3>
+              
+                  <div class="showcase-rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                  </div>
+              
+                      <div class="price-box">
+                        <p class="price">25000₹</p>
+                        <del>35000₹</del>
+                      </div>
+              
+                </div>
+              
+              </div>
+
+              <div class="showcase"onclick="sendData(this)">
+              
+                <div class="showcase-banner">
+                  <img src="./assets/71LO+Vnz6gL._AC_UF894,1000_QL80_FMwebp_.png" alt="Smart watche Vital Plus" class="product-img default"
+                    width="300">
+                  <img src="./assets/71LO+Vnz6gL._AC_UF894,1000_QL80_FMwebp_.png" alt="Smart watche Vital Plus" class="product-img hover" width="300">
+              
+                  <div class="showcase-actions">
+                    <button class="btn-action">
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="repeat-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="bag-add-outline"></ion-icon>
+                    </button>
+                  </div>
+                </div>
+              
+                <div class="showcase-content">
+                  <a href="#" class="showcase-category">wood</a>
+              
+                  <h3>
+                    <a href="#" class="showcase-title">Wood Multipurpose Floor Standing Bookshelf Decor Display Shelves Wall Book Storage Rack Organizer with Hinged Door for Office Home (Brown Maple & White)</h3>
+              
+                  <div class="showcase-rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                  </div>
+              
+                  
+                  <div class="price-box">
+                      <p class="price">6500₹</p>
+                     <del>8500₹</del>
+                  </div>
+              
+                </div>
+              
+              </div>
+
+              <div class="showcase"onclick="sendData(this)">
+              
+                <div class="showcase-banner">
+                  <img src="./assets/images/products/1.jpg" alt="living" class="product-img default"
+                    width="300">
+                  <img src="./assets/images/products/1.jpg" alt="living" class="product-img hover"
+                    width="300">
+              
+                  <p class="showcase-badge angle black">sale</p>
+              
+                  <div class="showcase-actions">
+                    <button class="btn-action">
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="repeat-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="bag-add-outline"></ion-icon>
+                    </button>
+                  </div>
+                </div>
+              
+                <div class="showcase-content">
+                  <a href="#" class="showcase-category">living</a>
+              
+                  <h3>
+                    <a href="#" class="showcase-title">Living Room Furniture
+                   </a>
+                  </h3>
+              
+                  <div class="showcase-rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                  </div>
+              
+                 <div class="price-box">
+                    <del>30000₹</del>
+                    <p class="price">25000₹</p>
+                  </div>
+              
+                </div>
+              
+              </div>
+
+              <div class="showcase"onclick="sendData(this)">
+              
+                <div class="showcase-banner">
+                  <img src="./assets/images/products/2.jpg" alt="Mens Winter Leathers woodens" class="product-img default"
+                    width="300">
+                  <img src="./assets/images/products/2.jpg" alt="Mens Winter Leathers woodens" class="product-img hover"
+                    width="300">
+              
+                  <div class="showcase-actions">
+                    <button class="btn-action">
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="repeat-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="bag-add-outline"></ion-icon>
+                    </button>
+                  </div>
+                </div>
+              
+                <div class="showcase-content">
+                  <a href="#" class="showcase-category">wooden</a>
+              
+                  <h3>
+                    <a href="#" class="showcase-title">Bedroom Furniture</a>
+                  </h3>
+              
+                  <div class="showcase-rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                  </div>
+              
+                  <div class="price-box">
+                      <del>70000₹</del>
+                      <p class="price">40000₹</p>
+                    </div>
+              
+                </div>
+              
+              </div>
+
+              <div class="showcase"onclick="sendData(this)">
+              
+                <div class="showcase-banner">
+                  <img src="./assets/images/products/3.jpg" alt="Trekking & Running Shoes - black" class="product-img default"
+                    width="300">
+                  <img src="./assets/images/products/3.jpg" alt="Trekking & Running Shoes - black" class="product-img hover"
+                    width="300">
+              
+                  <p class="showcase-badge angle black">sale</p>
+              
+                  <div class="showcase-actions">
+                    <button class="btn-action">
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="repeat-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="bag-add-outline"></ion-icon>
+                    </button>
+                  </div>
+                </div>
+              
+                <div class="showcase-content">
+                  <a href="#" class="showcase-category">dianning</a>
+              
+                  <h3>
+                    <a href="#" class="showcase-title">Dianing Room Furniture</a>
+                  </h3>
+              
+                  <div class="showcase-rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                  </div>
+              
+                    <div class="price-box">
+                      <del>50000₹</del>
+                      <p class="price">25000</p>
+                    </div>
+              
+                </div>
+              
+              </div>
+
+              <div class="showcase"onclick="sendData(this)">
+              
+                <div class="showcase-banner">
+                  <img src="./assets/images/products/4.jpg" alt="Men's Leather Formal Wear shoes" class="product-img default"
+                    width="300">
+                  <img src="./assets/images/products/4.jpg" alt="Men's Leather Formal Wear shoes" class="product-img hover"
+                    width="300">
+              
+                  <div class="showcase-actions">
+                    <button class="btn-action">
+                      <ion-icon name="heart-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="eye-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="repeat-outline"></ion-icon>
+                    </button>
+              
+                    <button class="btn-action">
+                      <ion-icon name="bag-add-outline"></ion-icon>
+                    </button>
+                  </div>
+                </div>
+              
+                <div class="showcase-content">
+                  <a href="#" class="showcase-category">wood</a>
+              
+                  <h3>
+                    <a href="#" class="showcase-title">Office Furniture</a>
+                  </h3>
+              
+                  <div class="showcase-rating">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star-outline"></ion-icon>
+                  </div>
+              
+                    <div class="price-box">
+                      <del>60000₹</del>
+                      <p class="price">30000₹</p>
+                    </div>
+              
+                </div>
+              
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+      <script>
+        // fetch and render a small preview of latest products in the sidebar
+        async function fetchSidebarProducts(){
+          try{
+            const res = await fetch('/api/products');
+            const prods = await res.json();
+            const container = document.getElementById('adminProductContainer');
+            if(container){
+              // intentionally keep Best Products static - do not inject "new arrivals" here
+              container.innerHTML = '';
+            }
+            // render small fixed new products grid
+            try{
+              const newGrid = document.getElementById('homeNewGrid'); if(newGrid){ newGrid.innerHTML = ''; (prods||[]).slice(0,4).forEach(p=>{ const c = document.createElement('div'); c.className='home-new-card'; c.innerHTML = `<a href="productdetails.html?id=${p._id}"><img src="${p.img||p.image||'./assets/images/products/1.jpg'}"></a><div class="card-title"><a href="productdetails.html?id=${p._id}">${p.name}</a></div><div class="card-price">₹${p.price}</div>`; newGrid.appendChild(c); }); }
+            }catch(e){ console.error(e); }
+          }catch(e){ console.error('sidebar products fetch failed', e); }
+        }
+        fetchSidebarProducts();
+        setInterval(fetchSidebarProducts, 3000);
+      </script>
+
+    </div>
+
+
+
+
+
+    <!--
+      - TESTIMONIALS, CTA & SERVICE
+    -->
+
+    <div>
+
+      <div class="container">
+
+
+          <!--
+            - SERVICE
+          -->
+
+          <div class="service">
+
+            <h2 class="title">Our Services</h2>
+
+            <div class="service-container">
+
+              <a href="#" class="service-item">
+
+                <div class="service-icon">
+                  <ion-icon name="boat-outline"></ion-icon>
+                </div>
+
+                <div class="service-content">
+
+                  <h3 class="service-title">All India Delivery</h3>
+                  <p class="service-desc">For Order Over 10000₹</p>
+
+                </div>
+
+              </a>
+
+              <a href="#" class="service-item">
+              
+                <div class="service-icon">
+                  <ion-icon name="rocket-outline"></ion-icon>
+                </div>
+              
+                <div class="service-content">
+              
+                  <h3 class="service-title">Next Day delivery</h3>
+                  <p class="service-desc">TamilNadu Orders Only</p>
+              
+                </div>
+              
+              </a>
+
+              <a href="#" class="service-item">
+              
+                <div class="service-icon">
+                  <ion-icon name="call-outline"></ion-icon>
+                </div>
+              
+                <div class="service-content">
+              
+                  <h3 class="service-title">Best Online Support</h3>
+                  <p class="service-desc">Hours: 8AM - 11PM</p>
+              
+                </div>
+              
+              </a>
+
+              <a href="#" class="service-item">
+              
+                <div class="service-icon">
+                  <ion-icon name="arrow-undo-outline"></ion-icon>
+                </div>
+              
+                <div class="service-content">
+              
+                  <h3 class="service-title">Return Policy</h3>
+                  <p class="service-desc">Easy & Free Return</p>
+              
+                </div>
+              
+              </a>
+
+              <a href="#" class="service-item">
+              
+                <div class="service-icon">
+                  <ion-icon name="ticket-outline"></ion-icon>
+                </div>
+              
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+
+
+  <!--
+    - FOOTER
+  -->
+
+  <footer>
+
+    <div class="footer-category">
+
+      <div class="container">
+<h2 class="footer-category-title">Furniture Directory</h2>
+
+<div class="footer-category-box">
+  <h3 class="category-box-title">Living Room :</h3>
+
+  <a href="#" class="footer-category-link">Sofas</a>
+  <a href="#" class="footer-category-link">TV Units</a>
+  <a href="#" class="footer-category-link">Coffee Tables</a>
+  <a href="#" class="footer-category-link">Recliners</a>
+  <a href="#" class="footer-category-link">Bookshelves</a>
+  <a href="#" class="footer-category-link">Shoe Racks</a>
+</div>
+
+<div class="footer-category-box">
+  <h3 class="category-box-title">Bedroom :</h3>
+
+  <a href="#" class="footer-category-link">Beds</a>
+  <a href="#" class="footer-category-link">Wardrobes</a>
+  <a href="#" class="footer-category-link">Dressing Tables</a>
+  <a href="#" class="footer-category-link">Bedside Tables</a>
+  <a href="#" class="footer-category-link">Mattresses</a>
+</div>
+
+<div class="footer-category-box">
+  <h3 class="category-box-title">Dining :</h3>
+
+  <a href="#" class="footer-category-link">Dining Tables</a>
+  <a href="#" class="footer-category-link">Dining Chairs</a>
+  <a href="#" class="footer-category-link">Crockery Units</a>
+  <a href="#" class="footer-category-link">Bar Cabinets</a>
+</div>
+
+<div class="footer-category-box">
+  <h3 class="category-box-title">Office :</h3>
+
+  <a href="#" class="footer-category-link">Office Tables</a>
+  <a href="#" class="footer-category-link">Office Chairs</a>
+  <a href="#" class="footer-category-link">Computer Desks</a>
+  <a href="#" class="footer-category-link">Storage Cabinets</a>
+  <a href="#" class="footer-category-link">Bookshelves</a>
+</div>
+
+
+
+
+
+
+    <div class="footer-nav">
+
+      <div class="container">
+
+        <ul class="footer-nav-list">
+
+          <li class="footer-nav-item">
+            
+
+<h2 class="nav-title">Popular Categories</h2>
+
+<a href="#" class="footer-nav-link">Living Room Furniture</a>
+<a href="#" class="footer-nav-link">Bedroom Furniture</a>
+<a href="#" class="footer-nav-link">Dining Room Furniture</a>
+<a href="#" class="footer-nav-link">Office Furniture</a>
+<a href="#" class="footer-nav-link">Outdoor Furniture</a></li>
+
+
+        </ul>
+
+        <ul class="footer-nav-list">
+        
+          <li class="footer-nav-item">
+            
+<h2 class="nav-title">Products</h2>
+
+<a href="#" class="footer-nav-link">New Arrivals</a>
+<a href="#" class="footer-nav-link">Best Sellers</a>
+<a href="#" class="footer-nav-link">Top Rated Products</a>
+<a href="#" class="footer-nav-link">Wooden Furniture</a>
+<a href="#" class="footer-nav-link">Space Saving Furniture</a>
+<a href="#" class="footer-nav-link">Offers & Discounts</a>
+</li>
+        
+        </ul>
+
+        <ul class="footer-nav-list">
+        
+          <li class="footer-nav-item">
+            
+
+<h2 class="nav-title">Our Company</h2>
+<a href="#" class="footer-nav-link">Customization</a>
+<a href="#" class="footer-nav-link">Bulk Orders</a>
+<a href="#" class="footer-nav-link">Delivery Information</a>
+<a href="#" class="footer-nav-link">Warranty</a>
+<a href="#" class="footer-nav-link">Terms & Conditions</a>
+</li>
+        
+        </ul>
+
+        <ul class="footer-nav-list">
+        
+          <li class="footer-nav-item">
+            <h2 class="nav-title">Services</h2>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Prices drop</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">New products</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Best sales</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Contact us</a>
+          </li>
+        
+          <li class="footer-nav-item">
+            <a href="#" class="footer-nav-link">Sitemap</a>
+          </li>
+        
+        </ul>
+
+        <ul class="footer-nav-list">
+
+          <li class="footer-nav-item">
+            <h2 class="nav-title">Contact</h2>
+          </li>
+
+          <li class="footer-nav-item flex">
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <address class="content">
+             Velmurugan Furnitures<br>Udumalpet Pasupathi street
+            </address>
+          </li>
+
+          <li class="footer-nav-item flex">
+            <div class="icon-box">
+              <ion-icon name="call-outline"></ion-icon>
+            </div>
+
+            <a href="tel:+607936-8058" class="footer-nav-link">(607) 936-8058</a>
+          </li>
+
+          <li class="footer-nav-item flex">
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+
+            <a href="mailto:example@gmail.com" class="footer-nav-link">example@gmail.com</a>
+          </li>
+
+        </ul>
+
+        <ul class="footer-nav-list">
+
+          <li class="footer-nav-item">
+            <h2 class="nav-title">Follow Us</h2>
+          </li>
+
+          <li>
+            <ul class="social-link">
+
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">
+                  <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+              </li>
+
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">
+                  <ion-icon name="logo-twitter"></ion-icon>
+                </a>
+              </li>
+
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">
+                  <ion-icon name="logo-linkedin"></ion-icon>
+                </a>
+              </li>
+
+              <li class="footer-nav-item">
+                <a href="#" class="footer-nav-link">
+                  <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+              </li>
+
+            </ul>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <div class="container">
+
+      
+        <p class="copyright">
+          Copyright &copy; <a href="#">Velmurugan Furnitures</a> all rights reserved.
+        </p>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+
+
+
+
+  <!--
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <script>
+    // Check if user is logged in
+    const loginUser = JSON.parse(localStorage.getItem('loginUser'));
+    if (!loginUser) {
+      window.location.href = 'index.html';
+    } else {
+      document.getElementById('welcome-message').textContent = `Welcome, ${loginUser.name}`;
+    }
+
+    // Logout functionality
+    document.getElementById('logout-btn').addEventListener('click', function() {
+      localStorage.removeItem('loginUser');
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+server/node_modules/
+
+# Environment files
+.env
+server/.env
+.env.local
+.env.*
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build output
+/dist
+/build
+
+# Editor files
+.vscode/
+.idea/
+
+# Local database or temp files
+*.sqlite
+*.db
+
+# GitHub / snapshot artifacts
+*.bak

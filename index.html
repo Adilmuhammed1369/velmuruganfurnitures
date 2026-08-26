@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Velmurugan Furnitures</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      font-family: 'Poppins', sans-serif;
+      --bg: #f7f5f1;
+      --surface: #ffffff;
+      --surface-soft: #f3ece4;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #b06c2e;
+      --primary-dark: #8e4e20;
+      --border: #e5e0d7;
+      --shadow: 0 28px 70px rgba(22, 44, 64, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: inherit;
+      color: var(--text);
+      background: radial-gradient(circle at top left, rgba(176, 108, 46, 0.14), transparent 28%),
+                  linear-gradient(180deg, #fffdfa 0%, var(--bg) 100%);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 18px 24px;
+      background:rgb(215, 106, 108);
+      color: #f8fafc;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.18);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-container {
+      width: min(1120px, 100%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .nav-logo img {
+      height: 42px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-logo h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #e5e7eb;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #fbbf24;
+    }
+
+    .auth-section {
+      min-height: calc(100vh - 88px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px 60px;
+    }
+
+    .auth-card {
+      width: min(100%, 420px);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 42px 36px;
+      box-shadow: var(--shadow);
+    }
+
+    .auth-card h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      letter-spacing: -0.03em;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--surface-soft);
+      font-size: 1rem;
+      color: var(--text);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(176, 108, 46, 0.12);
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: none;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      background: var(--primary-dark);
+    }
+
+    .auth-footer {
+      margin-top: 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .auth-footer a {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    @media (max-width: 630px) {
+      .nav-container { flex-direction: column; align-items: stretch; }
+      .nav-links { justify-content: center; }
+      .auth-card { padding: 30px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="home.html" class="nav-logo">
+
+        <h1>Velmurugan furnitures</h1>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="active">Login</a>
+        <a href="reg.html">Register</a>
+        <a href="home.html">Continue as Guest</a>
+        <a href="admin.html">Admin</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="auth-section">
+    <div class="auth-card">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="lname">Username</label>
+          <input type="text" id="lname" placeholder="Enter your username" required>
+        </div>
+        <div class="form-group">
+          <label for="lpass">Password</label>
+          <input type="password" id="lpass" placeholder="Enter your password" required>
+        </div>
+        <button type="submit" class="btn-primary">Login</button>
+      </form>
+      <div class="auth-footer">
+        Don't have an account? <a href="reg.html">Register here</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const username = document.getElementById('lname').value.trim();
+      const password = document.getElementById('lpass').value;
+
+      fetch('/api/users/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      }).then(r => r.json()).then(user => {
+        if (user.error) return alert(user.error);
+        localStorage.setItem('loginUser', JSON.stringify(user));
+        alert('Login successful');
+        window.location.href = 'home.html';
+      }).catch(err => {
+        console.error(err);
+        alert('Login failed');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login - Velmurugan Furnitures</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      font-family: 'Poppins', sans-serif;
+      --bg: #f7f5f1;
+      --surface: #ffffff;
+      --surface-soft: #f3ece4;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #b06c2e;
+      --primary-dark: #8e4e20;
+      --border: #e5e0d7;
+      --shadow: 0 28px 70px rgba(22, 44, 64, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: inherit;
+      color: var(--text);
+      background: radial-gradient(circle at top left, rgba(176, 108, 46, 0.14), transparent 28%),
+                  linear-gradient(180deg, #fffdfa 0%, var(--bg) 100%);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .navbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 18px 24px;
+      background: rgb(215, 106, 108);
+      color: #f8fafc;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.18);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-container {
+      width: min(1120px, 100%);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+
+    .nav-logo h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #e5e7eb;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #fbbf24;
+    }
+
+    .auth-section {
+      min-height: calc(100vh - 88px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px 60px;
+    }
+
+    .auth-card {
+      width: min(100%, 420px);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 42px 36px;
+      box-shadow: var(--shadow);
+    }
+
+    .auth-card h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      letter-spacing: -0.03em;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--surface-soft);
+      font-size: 1rem;
+      color: var(--text);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(176, 108, 46, 0.12);
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: none;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      background: var(--primary-dark);
+    }
+
+    .auth-footer {
+      margin-top: 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .auth-footer a {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    @media (max-width: 630px) {
+      .nav-container { flex-direction: column; align-items: stretch; }
+      .nav-links { justify-content: center; }
+      .auth-card { padding: 30px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="home.html" class="nav-logo">
+        <h1>Velmurugan Furnitures</h1>
+      </a>
+      <div class="nav-links">
+        <a href="home.html">Guest</a>
+        <a href="index.html">Login</a>
+        <a href="admin.html" class="active">Admin</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="auth-section">
+    <div class="auth-card">
+      <h2>Admin Login</h2>
+      <form id="adminForm">
+        <div class="form-group">
+          <label for="user">Username</label>
+          <input type="text" id="user" placeholder="Enter admin username" required>
+        </div>
+        <div class="form-group">
+          <label for="pass">Password</label>
+          <input type="password" id="pass" placeholder="Enter admin password" required>
+        </div>
+        <button type="submit" class="btn-primary">Login</button>
+      </form>
+     
+    </div>
+  </section>
+
+  <script>
+    document.getElementById('adminForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const username = document.getElementById('user').value.trim();
+      const password = document.getElementById('pass').value;
+
+      if (username === 'admin' && password === '1234') {
+        localStorage.setItem('adminLogin', 'true');
+        window.location.href = 'adminpanel.html';
+      } else {
+        alert('Invalid admin credentials');
+      }
+    });
+  </script>
+</body>
+</html>

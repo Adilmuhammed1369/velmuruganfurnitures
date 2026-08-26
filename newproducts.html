@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="stylesheet" href="./assets/css/style-prefix.css">
+        <title>New Arrivals</title>
+        <style>
+            .action-row{ display:flex; gap:10px; justify-content:flex-end; margin-bottom:12px; }
+            .card-actions{ display:flex; gap:8px; margin-top:8px; }
+            .card-btn{ background:var(--eerie-black); color:var(--white); padding:8px 12px; border-radius:8px; font-weight:600; }
+            .card-btn.secondary{ background:transparent; border:1px solid var(--cultured); color:var(--onyx); }
+        </style>
+</head>
+
+<body>
+
+    <main class="container">
+        <div style="margin-top:18px;">
+            <h2 class="title">New Products</h2>
+            <div class="action-row">
+                <a href="wishlist.html" class="card-btn secondary">Wishlist</a>
+                <a href="cart.html" class="card-btn secondary">Cart</a>
+            </div>
+
+            <div id="products" class="new-products-grid"></div>
+
+        </div>
+    </main>
+
+    <script>
+        let latestProducts = [];
+        const container = document.getElementById('products');
+
+        function openProduct(id){
+            const p = (latestProducts||[]).find(x=>x._id===id);
+            if(p) localStorage.setItem('orderProduct', JSON.stringify({ _id: p._id, img: p.img || p.image || '', name: p.name, price: p.price, description: p.description || '' }));
+            location.href = 'productdetails.html?id=' + id;
+        }
+
+        function createCard(p){
+            const el = document.createElement('div');
+            el.className = 'new-product-card';
+            el.innerHTML = `
+                <a href="#" onclick="openProduct('${p._id}')"><img src="${p.img || p.image || './assets/images/products/1.jpg'}" alt="${p.name}"></a>
+                <div class="card-title"><a href="#" onclick="openProduct('${p._id}')" style="color:inherit">${p.name}</a></div>
+                <div class="card-price">₹${p.price}</div>
+                <div class="card-actions">
+                    <button class="card-btn" onclick="buyById('${p._id}')">Buy Now</button>
+                    <button class="card-btn secondary" onclick="cartBackendById('${p._id}')">Add to Cart</button>
+                </div>
+            `;
+            return el;
+        }
+
+        async function fetchProducts(){
+            try{
+                const res = await fetch('/api/products');
+                latestProducts = await res.json();
+                renderProducts();
+            }catch(e){ console.error('Failed to fetch products', e); }
+        }
+
+        function renderProducts(){
+            container.innerHTML = '';
+            (latestProducts||[]).forEach(p=> container.appendChild(createCard(p)));
+        }
+
+        function cartBackendById(id){
+            const p = (latestProducts||[]).find(x=>x._id===id);
+            if(!p) return alert('Product not found');
+            const product = { img: p.img, name: p.name, price: p.price };
+            const cartItems = JSON.parse(localStorage.getItem('cart')||'[]');
+            cartItems.push(product);
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+            const loginUser = JSON.parse(localStorage.getItem('loginUser')) || null;
+            if (loginUser && loginUser._id){ fetch('/api/cart',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ userId: loginUser._id, product })}).catch(()=>{}); }
+            alert('Added to Cart');
+        }
+
+        function buyById(id){
+            const user = localStorage.getItem('loginUser');
+            if(!user){ alert('Please login first'); location.href='index.html'; return; }
+            const p = (latestProducts||[]).find(x=>x._id===id);
+            if(!p) return alert('Product not found');
+            const product = { img: p.img, name: p.name, price: p.price };
+            localStorage.setItem('orderProduct', JSON.stringify(product));
+            location.href = 'buy.html';
+        }
+
+        // initial fetch and polling
+        fetchProducts();
+        setInterval(fetchProducts, 3000);
+    </script>
+
+</body>
+</html>

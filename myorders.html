@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Orders - Velmurugan Furnitures</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body{font-family:Poppins, sans-serif;background:#f8f8f8}
+    .container{max-width:1120px;margin:24px auto;padding:16px}
+    .order{background:#fff;padding:12px;border-radius:8px;margin-bottom:12px;border:1px solid #eee}
+    .order h4{margin:0 0 6px}
+    .order-items{display:flex;gap:12px;flex-wrap:wrap}
+    .order-item{display:flex;gap:12px;align-items:center;border-radius:6px;padding:8px;border:1px solid #f0f0f0;background:#fafafa}
+    .nav{background:rgb(215,106,108);color:#fff;padding:12px}
+    .nav a{color:#fff;margin-right:12px;text-decoration:none}
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <a href="home.html">Home</a>
+    <a href="wishlist.html">Wishlist</a>
+    <a href="cart.html">Cart</a>
+    <a href="myorders.html">My Orders</a>
+  </div>
+  <div class="container">
+    <h2>My Orders</h2>
+    <div id="ordersList">Loading orders...</div>
+  </div>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem('loginUser'));
+    const el = document.getElementById('ordersList');
+    if(!user || !user._id){
+      el.innerHTML = '<p>Please login to see your orders.</p>';
+    } else {
+      fetch('/api/orders/my/' + user._id).then(r=>r.json()).then(data=>{
+        if(!data || data.length === 0) return el.innerHTML = '<p>No orders found.</p>';
+        el.innerHTML = '';
+        data.forEach(o=>{
+          const div = document.createElement('div');
+          div.className = 'order';
+          // status label colors
+          const statusColor = o.canceled ? 'crimson' : (o.paymentStatus === 'paid' ? 'green' : (o.paymentStatus === 'pending' ? 'orange' : 'gray'));
+          div.innerHTML = `
+            <h4>Order ${o._id} - <small>${new Date(o.createdAt).toLocaleString()}</small></h4>
+            <div>Status: <strong style="color:${statusColor}">${o.paymentStatus}${o.canceled? ' (cancelled)':''}</strong> | Method: ${o.paymentMethod}</div>
+            <div class="order-items" style="margin-top:8px">
+              ${o.items.map((it, idx)=>`<div class="order-item"><a href="#" class="order-product" data-name="${encodeURIComponent(it.name)}" data-img="${encodeURIComponent(it.img)}" data-price="${encodeURIComponent(it.price)}"><img src="${it.img}" width="60"></a><div><div><a href="#" class="order-product" data-name="${encodeURIComponent(it.name)}" data-img="${encodeURIComponent(it.img)}" data-price="${encodeURIComponent(it.price)}"><strong>${it.name}</strong></a></div><div>${it.price}</div></div><div style="margin-left:12px"><div style="font-size:13px;color:#374151">${ it.updates && it.updates.length ? `<button class=\"viewUpdatesBtn\" data-order=\"${o._id}\" data-index=\"${idx}\">View updates (${it.updates.length})</button><div id=\"updates-${o._id}-${idx}\" style=\"display:none;margin-top:6px\">${ (it.updates||[]).map(u=>`<div style=\\"margin-top:6px;\\"><small>${new Date(u.createdAt).toLocaleString()}</small><div>${u.text}</div></div>`).join('') }</div>` : '' }</div></div></div>`).join('')}
+            </div>
+            <div style="margin-top:8px">
+              ${o.canceled ? '' : `<button data-id="${o._id}" class="cancelBtn" style="background:#ef4444;color:#fff;border:none;padding:8px 12px;border-radius:8px;cursor:pointer">Cancel Order</button>`}
+            </div>
+          `;
+          el.appendChild(div);
+        });
+        // attach click handlers for product links and cancel
+        document.querySelectorAll('.order-product').forEach(a=>{
+          a.addEventListener('click', function(ev){ ev.preventDefault(); const name=decodeURIComponent(this.dataset.name); const img=decodeURIComponent(this.dataset.img); const price=decodeURIComponent(this.dataset.price); localStorage.setItem('product', JSON.stringify({ name, img, price })); location.href = 'productdetails.html'; });
+        });
+        document.querySelectorAll('.viewUpdatesBtn').forEach(b=>{ b.addEventListener('click', function(){ const order=this.dataset.order; const idx=this.dataset.index; const el=document.getElementById('updates-'+order+'-'+idx); if(!el) return; el.style.display = el.style.display==='none' ? 'block' : 'none'; }); });
+        document.querySelectorAll('.cancelBtn').forEach(b=>{ b.addEventListener('click', function(){ if(!confirm('Cancel this order?')) return; const id=this.dataset.id; fetch('/api/orders/' + id + '/cancel', { method:'POST' }).then(r=>r.json()).then(res=>{ alert('Order cancelled'); location.reload(); }).catch(e=>{ alert('Unable to cancel'); }); }); });
+        // Per-item cancel removed to avoid duplicate cancel options (use order-level cancel only)
+      }).catch(e=>{ el.innerHTML = '<p>Unable to load orders.</p>'; });
+    }
+  </script>
+</body>
+</html>
