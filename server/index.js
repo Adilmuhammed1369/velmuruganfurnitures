@@ -22,6 +22,42 @@ const path = require('path');
 // Serve frontend static files from parent directory so frontend can call API on same origin
 app.use(express.static(path.join(__dirname, '..')));
 
+// Support direct URL navigation for the static pages used by the storefront
+const frontendPages = {
+  '/': 'index.html',
+  '/home': 'home.html',
+  '/home.html': 'home.html',
+  '/index': 'index.html',
+  '/index.html': 'index.html',
+  '/login': 'index.html',
+  '/login.html': 'index.html',
+  '/register': 'reg.html',
+  '/reg': 'reg.html',
+  '/reg.html': 'reg.html',
+  '/admin': 'admin.html',
+  '/admin.html': 'admin.html',
+  '/adminpanel': 'adminpanel.html',
+  '/adminpanel.html': 'adminpanel.html',
+  '/cart': 'cart.html',
+  '/cart.html': 'cart.html',
+  '/wishlist': 'wishlist.html',
+  '/wishlist.html': 'wishlist.html',
+  '/myorders': 'myorders.html',
+  '/myorders.html': 'myorders.html',
+  '/buy': 'buy.html',
+  '/buy.html': 'buy.html',
+  '/productdetails': 'productdetails.html',
+  '/productdetails.html': 'productdetails.html',
+  '/newproducts': 'newproducts.html',
+  '/newproducts.html': 'newproducts.html'
+};
+
+for (const [route, file] of Object.entries(frontendPages)) {
+  app.get(route, (req, res) => {
+    res.sendFile(path.join(__dirname, '..', file));
+  });
+}
+
 // Lightweight health endpoint (no DB) to verify server is running
 app.get('/api/health', (req, res) => res.json({ ok: true, env: process.env.NODE_ENV || 'development' }));
 
@@ -50,7 +86,9 @@ app.use('/api/orders', require('./routes/orders'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/admin', require('./routes/admin'));
 
-app.get('/', (req, res) => res.send({ status: 'ok' }));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'index.html'));
+});
 
 // generic error handler (catch any remaining errors)
 app.use((err, req, res, next) => {
